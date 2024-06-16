@@ -11,7 +11,7 @@
         public decimal GrandTotal { get; set; }
         public required string AddressShipping { get; set; }
         public required string Addressbilling { get; set; }
-
+         
 
     }
-}
+} 
