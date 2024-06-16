@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
 using WebApplication2.Models;
@@ -37,9 +32,9 @@ namespace WebApplication2.Controllers
             if (customer == null)
             {
                 return NotFound();
+            }else{
+            return Ok(customer);
             }
-
-            return customer;
         }
 
         // PUT: api/Customers/5
