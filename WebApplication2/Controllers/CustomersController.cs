@@ -32,9 +32,9 @@ namespace WebApplication2.Controllers
             if (customer == null)
             {
                 return NotFound();
+            }else{
+            return Ok(customer);
             }
-
-            return customer;
         }
 
         // PUT: api/Customers/5 
