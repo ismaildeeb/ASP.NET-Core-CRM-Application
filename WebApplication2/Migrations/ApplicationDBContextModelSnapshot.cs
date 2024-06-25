@@ -30,10 +30,6 @@ namespace WebApplication2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CustomerCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -72,9 +68,6 @@ namespace WebApplication2.Migrations
                     b.Property<decimal?>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -87,12 +80,10 @@ namespace WebApplication2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("WebApplication2.Models.SalesOrderDetails", b =>
+            modelBuilder.Entity("WebApplication2.Models.SalesOrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,7 +127,7 @@ namespace WebApplication2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -161,20 +152,13 @@ namespace WebApplication2.Migrations
                     b.ToTable("SalesOrderHeader");
                 });
 
-            modelBuilder.Entity("WebApplication2.Models.Product", b =>
-                {
-                    b.HasOne("WebApplication2.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
             modelBuilder.Entity("WebApplication2.Models.SalesOrderHeader", b =>
                 {
                     b.HasOne("WebApplication2.Models.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
                 });

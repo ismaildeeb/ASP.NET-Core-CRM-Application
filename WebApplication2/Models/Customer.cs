@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
+
+
 
 namespace WebApplication2.Models
 {
@@ -12,7 +12,7 @@ namespace WebApplication2.Models
         public required string LastName { get; set; }
         public required string Email { get; set; }
         public int Phone { get; set; }
-        public required string Address { get; set; }
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; }
+
     }
 }
